@@ -32,3 +32,28 @@ describe('Clicking "Pusha till stacken"', () => {
 		await alert.accept();
 	});
 });
+
+test('Check the top element in stack', async () => {
+    stack = await driver.findElement(By.id('top_of_stack')).getText();
+    expect(stack).toEqual("Bananer");
+});
+
+test('Pop operation removes top element from stack', async () => {
+    let pop = await driver.findElement(By.id('pop'));
+    await pop.click();
+
+    await driver.sleep(500);
+    // Försöka hantera alert
+    try {
+        let alert = await driver.switchTo().alert();
+        await alert.dismiss();
+    } catch (e) {
+        // Ingen alert: ignorera
+    }
+
+    let peek = await driver.findElement(By.id('peek'));
+    await peek.click();
+
+    stack = await driver.findElement(By.id('top_of_stack')).getText();
+    expect(stack).toEqual("n/a");
+});
