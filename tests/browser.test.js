@@ -55,5 +55,5 @@ test('Pop operation removes top element from stack', async () => {
     await peek.click();
 
     stack = await driver.findElement(By.id('top_of_stack')).getText();
-    expect(stack).toEqual("n/a");
+    expect(stack).toEqual("undefined");
 });

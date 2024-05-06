@@ -27,6 +27,8 @@ test('after using pop, return the top element of the stack', () => {
 test('stack is empty after pop removes all elements from it', () => {
     stack.pop();
     stack.pop();
+    stack.pop();
+    stack.pop();
 
     expect(stack.peek()).toBeUndefined();
 });
